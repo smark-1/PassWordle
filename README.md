@@ -25,7 +25,7 @@ PassWordle is a password-guessing game inspired by Wordle, but with the most com
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/smark-1/passwordle.git
+   git clone https://github.com/smark-1/PassWordle.git
    cd passwordle
    ```
 2. Install dependencies:
