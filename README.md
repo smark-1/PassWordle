@@ -1,6 +1,6 @@
 # PassWordle
 
-PassWordle is a word-guessing game inspired by Wordle, but with the most common passwords! Try to guess the secret password in a limited number of attempts. Each guess provides feedback to help you crack the code.
+PassWordle is a password-guessing game inspired by Wordle, but with the most common passwords! Try to guess the secret password in a limited number of attempts. Each guess provides feedback to help you crack the code.
 
 > ⚠️ **Warning:** This game uses the most common passwords found on the internet. If you recognize your own password in here, consider this your friendly (and slightly judgmental) reminder to change it immediately. Seriously, "password123" is not fooling anyone!
 
