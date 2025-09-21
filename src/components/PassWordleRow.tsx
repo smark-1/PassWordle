@@ -38,7 +38,9 @@ const PassWordleRow: React.FC<PassWordleRowProps> = (props: PassWordleRowProps) 
             key={idx}
             value={answer && answer[idx] && !/^[a-zA-Z]$/.test(answer[idx]) ? answer[idx] : currentGuessArr?.[idx] ?? ""}
             isInput
-            inputRef={inputRefs ? (el: HTMLInputElement|null) => { inputRefs[idx] = el; } : undefined}
+            inputRef={inputRefs ? (el: HTMLInputElement|null) => {
+              if (el) inputRefs[idx] = el;
+            } : undefined}
             onChange={handleInput ? (e: React.ChangeEvent<HTMLInputElement>) => handleInput(idx, e) : undefined}
             onKeyDown={handleKeyDown ? (e: React.KeyboardEvent<HTMLInputElement>) => handleKeyDown(idx, e) : undefined}
             onFocus={handleFocus ? () => handleFocus(idx) : undefined}

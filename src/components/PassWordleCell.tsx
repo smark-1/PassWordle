@@ -31,6 +31,12 @@ const PassWordleCell: React.FC<PassWordleCellProps> = ({ value, feedback, isInpu
         maxLength={1}
         autoFocus={active}
         inputMode="text"
+        autoComplete="off"
+        name="wordle-cell-input"
+        id="wordle-cell-input"
+        data-lpignore="true"
+        data-1p-ignore="true"
+        data-autocomplete="off"
       />
     );
   }

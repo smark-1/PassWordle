@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import PassWordleRow from "./PassWordleRow.tsx";
 import PassWordleAlphabet from "./PassWordleAlphabet.tsx";
 import PassWordleGuessButton from "./PassWordleGuessButton.tsx";
@@ -61,6 +61,15 @@ export default function PassWordle({ answer, onRestart }: PassWordleProps) {
   const inputRefs = useRef<(HTMLInputElement|null)[]>([]);
 
 
+  const getNextEditableIdx = useCallback((startIdx: number, direction: 1 | -1, answer: string) => {
+    let idx = startIdx + direction;
+    while (idx >= 0 && idx < wordLength) {
+      if (!isNonAlpha(answer[idx])) return idx;
+      idx += direction;
+    }
+    return startIdx;
+  }, [wordLength]);
+
   // When answer changes, pre-fill non-alpha positions in currentGuessArr
   useEffect(() => {
     setCurrentGuessArr(
@@ -78,16 +87,7 @@ export default function PassWordle({ answer, onRestart }: PassWordleProps) {
       setActiveInputIdx(firstEditable);
       inputRefs.current[firstEditable]?.focus();
     }, 0);
-  }, [answer, getNextEditableIdx, wordLength]);
-
-  function getNextEditableIdx(startIdx: number, direction: 1 | -1, answer: string): number {
-    let idx = startIdx + direction;
-    while (idx >= 0 && idx < wordLength) {
-      if (!isNonAlpha(answer[idx])) return idx;
-      idx += direction;
-    }
-    return startIdx; // fallback to current if none found
-  }
+  }, [answer, wordLength]);
 
   function handleInput(idx: number, e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
